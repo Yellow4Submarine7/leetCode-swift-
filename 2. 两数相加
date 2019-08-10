@@ -1,0 +1,48 @@
+//swift链表结构
+//guard-else，else中必须进行return
+//repeat-while,条件循环语句
+/**leetcode
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public var val: Int
+ *     public var next: ListNode?
+ *     public init(_ val: Int) {
+ *         self.val = val
+ *         self.next = nil
+ *     }
+ * }
+ */
+class Solution {
+    func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+        guard l1 != nil else{
+            return l2
+        }
+        guard l2 != nil else{
+            return l1
+        }
+        var c1 = l1, c2 = l2
+        let resultNode:ListNode = ListNode.init(0)
+        var currentNode = resultNode
+        var carry = 0
+        repeat{
+            var sum: Int = 0
+            if(c1 != nil) {
+              sum += c1!.val
+              c1 = c1!.next
+            }
+            if(c2 != nil){
+               sum += c2!.val
+               c2 = c2!.next
+           }
+            sum += carry
+            carry = sum / 10
+            sum = sum % 10
+            currentNode.next = ListNode.init(sum)
+            currentNode = currentNode.next!
+        } while(c1 != nil || c2 != nil)
+        if(carry == 1){
+            currentNode.next = ListNode.init(1)
+        }
+        return resultNode.next
+    }
+}
