@@ -1,0 +1,19 @@
+//用dic来索引数组降低时间复杂度
+class Solution{
+    func twoSum(_ nums:[Int], _ target: Int) -> [Int]{
+        var count = nums.count
+        var dic = [Int:Int]()
+        
+        for i in 0..<count{
+            dic[nums[i]] = i
+        }
+        
+        for i in 0..<count{
+            let found = target - nums[i]
+            if let j = dic[found], j != i{
+                return[i,j]
+            }
+        }
+        return[]
+    }
+}
