@@ -1,0 +1,23 @@
+//字典的声明方式： var hashMap = [Character:Int]()前面是key后面是value
+//在完成主要代码前首先检查特值: if nums == 0
+// ?? 用于给定一个初值
+
+class Solution {
+    func lengthOfLongestSubstring(_ s: String) -> Int {
+        var start = 0,result = 0
+        var hashMap = [Character: Int]()
+        var a = Array(s)
+        var nums = a.count
+        if nums == 0{
+            return 0
+        }
+        for end in 0..<nums{
+            if hashMap.keys.contains(a[end]){
+               start = max(hashMap[a[end]] ?? 0,start)
+            }
+            result = max(result,end - start + 1)
+            hashMap[a[end]] = end + 1
+        }
+        return result
+    }
+}
