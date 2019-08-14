@@ -1,0 +1,25 @@
+class Solution {
+    func reverse(_ x: Int) -> Int {
+    let INT_MAX = pow(2.0, 31.0) - 1
+    let INT_MIN = -pow(2.0, 31.0)
+    if INT_MIN >= Double(x) || Double(x) >= INT_MAX {
+        return 0
+    }
+    let s = String(x)
+    let nums = s.count
+    let a =  Array(String(x))
+    if(a[0] == "-"){
+        let startIndex = s.index(s.startIndex, offsetBy: 1)
+        let endIndex = s.index(s.startIndex, offsetBy: nums)
+        let resultStr = String(s[startIndex..<endIndex])
+        let y  = "-" + resultStr.reversed()
+        let X = Int(y)!
+        return X
+    }
+    else{
+        let X = Int(String(String(x).reversed()))!
+        return X
+        }
+    
+    }
+}
