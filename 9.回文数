@@ -1,0 +1,16 @@
+class Solution {
+    func isPalindrome(_ x: Int) -> Bool {
+        // 排除负数以及可以整除10的数但是x==0应该return true
+        if x < 0 || x % 10 == 0 && x != 0 {
+            return false
+        }
+        var X = x
+        var reverse = 0
+
+        while X > reverse {
+            reverse = reverse * 10 + X % 10
+            X /= 10
+        }
+        return X == reverse || X == reverse / 10
+    }
+}
