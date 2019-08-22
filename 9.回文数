@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     func isPalindrome(_ x: Int) -> Bool {
         // 排除负数以及可以整除10的数但是x==0应该return true
         if x < 0 || x % 10 == 0 && x != 0 {
@@ -12,5 +12,22 @@ class Solution {
             X /= 10
         }
         return X == reverse || X == reverse / 10
+    }
+}
+
+class Solution2 {
+    func isPalindrome(_ x: Int) -> Bool {
+    let s = String(x)
+    var a = Array(s)
+    let num = a.count
+    if num <= 1{
+        return true
+    }
+    for i in 0..<num{
+        if a[i] != a[num - i - 1]{
+            return false
+        }
+    }
+    return true
     }
 }
