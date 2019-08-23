@@ -9,3 +9,20 @@ class SolutionTrash {                       //暴力解法，垃圾中的战斗�
         return maxAr
     }
 }
+
+class SolutionGood {
+    func maxArea(_ height: [Int]) -> Int {
+        var l = 0, r = height.count - 1
+        var maxar = 0
+        while l<r {
+            maxar = max(min(height[l], height[r]) * (r - l),maxar)
+            if height[l]<height[r]{
+                l+=1
+            }
+            else{       //总有一个要移位，不能用另一个if，只能用else
+             r-=1
+            }
+        }
+        return maxar
+    }
+}
