@@ -1,0 +1,11 @@
+class SolutionTrash {                       //暴力解法，垃圾中的战斗机，连leetcode时间限制都过不了
+    func maxArea(_ height: [Int]) -> Int {
+        var maxAr = 0
+        for i in 0 ..< height.count{
+            for j in i + 1 ..< height.count{
+                maxAr = max(maxAr, min(height[i], height[j]) * (j - i))
+            }
+        }
+        return maxAr
+    }
+}
