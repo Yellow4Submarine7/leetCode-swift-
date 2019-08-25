@@ -1,25 +1,34 @@
-ret[15] = 0; // memset(ret, 0, 16);
-    
-    char Rome[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-    char i = 14, j = 0, m = 0;
-    
-    while(num) {
-        m = num % 10;
-        num /= 10;
-        while (1) {
-            if (m == 9) {ret[i--] = Rome[j+2]; m = 1;}
-            else if (m == 8) {ret[i--] = Rome[j]; m--;}
-            else if (m == 7) {ret[i--] = Rome[j]; m--;}
-            else if (m == 6) {ret[i--] = Rome[j]; m--;}
-            else if (m == 5) {ret[i--] = Rome[j+1]; break;}
-            else if (m == 4) {ret[i--] = Rome[j+1]; m=1;}
-            else if (m == 3) {ret[i--] = Rome[j]; m--;}
-            else if (m == 2) {ret[i--] = Rome[j]; m--;}
-            else if (m == 1) {ret[i--] = Rome[j]; break;}
-            else break;
+//此方法取巧性太强，仅供参考
+class Solution {
+    func intToRoman(_ num: Int) -> String {
+        var n = num
+        var ret = [String](repeating: "", count: 16)        //最终结果数组,存15个是因为范围内结果字符串最大长度为15
+
+    let rome:[String] = ["I","V","X","L","C","D","M"]
+
+    var i = 15, j = 0, m = 0
+
+    while(n != 0){
+        m = n % 10
+        n /= 10
+        while(true) {
+            if (m == 9){i -= 1;ret[i] = rome[j+2]; m = 1}
+            else if(m == 8){i -= 1;ret[i] = rome[j];m -= 1}
+            else if(m == 7){i -= 1;ret[i] = rome[j];m -= 1}
+            else if(m == 6){i -= 1;ret[i] = rome[j];m -= 1}
+            else if(m == 5){i -= 1;ret[i] = rome[j+1];break}
+            else if(m == 4){i -= 1;ret[i] = rome[j+1];m = 1}
+            else if(m == 3){i -= 1;ret[i] = rome[j];m -= 1}
+            else if(m == 2){i -= 1;ret[i] = rome[j];m -= 1}
+            else if(m == 1){i -= 1;ret[i] = rome[j];break}
+            else {break}
         }
-        j += 2;
+        j += 2
     }
-    return (ret + i + 1);
-    
-    //这方法也太吊了，牛批，明天写成swift
+    var result = ""
+    for item in ret{
+        result += item
+            }
+    return result  
+    }
+}
