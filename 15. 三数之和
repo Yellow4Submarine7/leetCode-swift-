@@ -1,0 +1,36 @@
+func threeSum(_ nums: [Int]) -> [[Int]] {
+    var i = 0
+    var j = nums.count - 1
+    let s_nums = nums.sorted()
+    var resultArr:[[Int]] = [[]]
+    if nums.count == 0 {
+        return [[]]
+    }
+    for a in 0..<nums.count {
+        if (s_nums[a] + s_nums[i] + s_nums[j] < 0 && i < j){
+            if s_nums[a] == s_nums[i]{
+                i += 2
+            }
+            i += 1
+        }
+        if (s_nums[a] + s_nums[i] + s_nums[j] > 0 && i < j){
+            if s_nums[a] ==  s_nums[j]{
+                i -= 2
+            }
+            j -= 1
+        }
+        var ar = [Int](repeating: 0, count: 3)
+        if (s_nums[a] + s_nums[i] + s_nums[j] == 0 && i < j){
+            ar[0] = s_nums[a]
+            ar[1] = s_nums[i]
+            ar[2] = s_nums[j]
+        }
+        
+        resultArr.append(ar)
+    }
+    print(resultArr)
+    return resultArr
+}
+
+
+threeSum([-1, 0, 1, 2, -1, -4])
